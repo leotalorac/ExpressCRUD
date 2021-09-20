@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 const { connect } = require('./db')
-const { helloWorld } = require('./controllers/users')
+const { helloWorld, createUser, getAllUsers, getUserByName, updateUser,deleteUser,login} = require('./controllers/users')
 
 class App {
     constructor() {
@@ -19,6 +19,12 @@ class App {
     routes() {
         // Routes
         app.get('/', helloWorld);
+        app.post("/createuser",createUser);
+        app.get("/getallusers",getAllUsers);
+        app.get("/getuserbyname",getUserByName);
+        app.put("/replaceuser",updateUser);
+        app.delete("/deleteuser",deleteUser);
+        app.get("/login",login);
     }
 
     initDatabase() {
